@@ -6,6 +6,8 @@ use App\Filament\Auth\CustomLoginResponse;
 use App\Filament\Auth\CustomLogoutResponse;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse as LoginResponseContract;
 use Filament\Auth\Http\Responses\Contracts\LogoutResponse as LogoutResponseContract;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,5 +34,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        app()->setLocale('id');
+        Model::unguard();
+        URL::forceScheme('https');
     }
 }
